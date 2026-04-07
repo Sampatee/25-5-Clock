@@ -115,6 +115,8 @@ class App extends Component {
   }
 
   switchTimerAfterDelay() {
+    this.setState({ ...this.state, inTransition: true });
+
     //delay to display timer label and starting point correctly
     if (this.delayTimer) clearTimeout(this.delayTimer);
     this.delayTimer = setTimeout(() => {
@@ -255,7 +257,6 @@ class App extends Component {
       this.audioRef.current.play();
 
       //begin traansition
-      this.setState({ ...this.state, inTransition: true });
       this.switchTimerAfterDelay();
     });
 
